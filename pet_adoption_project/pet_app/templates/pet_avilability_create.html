@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}pet the best{% endblock  %}
+
+
+{% block content %} 
+ 
+<a class="btn btn-primary" href="{% url "pet_avilability_create" %}">Create post for avilabile pets to adopt</a>
+
+<div class="container row">
+
+    {% for forms in form  %}
+    
+    <div class="card" style="width: 18rem;">
+        <img src=".image/dog1.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{pet_detail.pet_name}} </h5>
+          <p class="card-text">{{pet_detail.about_pet}}</p>
+          <a href="{% url 'pet_list_edit' pet_list_id %}" class="btn btn-primary">Edit</a>
+          <a href="{% url 'pet_list_delete' pet_list_id %}" class="btn btn-danger">Delete</a>
+
+        </div>
+      </div>
+    
+    
+    {% endfor %}
+</div>
+{% endblock  %}
+   

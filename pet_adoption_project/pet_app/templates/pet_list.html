@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}pet the best{% endblock  %}
+
+{% block content %} 
+<h1>pet the best</h1>
+
+
+
+    <div class="container row gap-3">
+      {% for forms in pet_detail%} 
+      <div class="card" style="width: 18rem;">
+        <img src="{{ forms.pet_image.url }}" class="card-img-top" alt="...">
+        <div class="card-body ">
+          <h5 class="card-title">{{ forms.pet_name }}</h5>
+          <p class="card-text">{{ forms.about_pet }}</p>
+          <button>
+             <a href="user_app/user_register.html" class="Adopt_btn">Wanna Adopt</a>     {% comment %} {% url "user_app/adoption_application.html" %} {% endcomment %}
+          </button> 
+        </div>
+      </div>
+      {%endfor%}
+      {% if pet_detail.has_other_pages %}
+
+    <ul>
+      {% for i in pet_detail.paginator.page_range %}
+      {% if i == pet_detail.number %}
+      <li><a href="?page={{i}}"style="color:red">{{i}}</a></li>
+
+
+
+      {% else %}
+      <li><a href="?page={{i}}">{{i}}</a></li>
+      {% endif %}
+      {% endfor %}
+
+    </ul> 
+ {% endif %}
+    </div>
+{% endblock  %}
+   
